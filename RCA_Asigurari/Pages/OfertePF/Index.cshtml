@@ -6,7 +6,7 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<<h1>Index</h1>
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
@@ -20,155 +20,79 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Created At
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Client)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].CNP)
-            </th>
-         @*   <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].NumeProprietar)
-            </th>*@
-         @*   <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].PrenumeProprietar)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].SerieCI)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].NumarCI)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Varsta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].NumarIdentificare)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].NrInmatriculare)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Marca)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].AnFabricatie)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].CapacitateCilindrica)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].SerieCIV)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].NrLocuri)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].MasaMaxima)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Putere)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].CategorieVehicul)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].TipCombustibil)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Pret)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.OfertaPF) {
-        <tr>
-                <td>
-                    @item.CreatedAt.ToString("dd/MM/yyyy HH:mm")
-                </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Client.NumeProprietar)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CNP)
-            </td>
-           @* <td>
-                @Html.DisplayFor(modelItem => item.NumeProprietar)
-            </td>*@
-           @* <td>
-                @Html.DisplayFor(modelItem => item.PrenumeProprietar)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.SerieCI)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumarCI)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Varsta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumarIdentificare)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NrInmatriculare)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Marca)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnFabricatie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CapacitateCilindrica)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SerieCIV)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NrLocuri)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MasaMaxima)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Putere)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategorieVehicul.CategoriaVehicul)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipCombustibil.TipulCombustibil)
-            </td>
-            <td>
-                    <strong>
-                        @Html.DisplayFor(modelItem => item.Pret) Lei
-                    </strong>
-            </td>
-            
-                
-            <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"> </i></a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
 
+@foreach (var item in Model.OfertaPF.OrderByDescending(o => o.CreatedAt)) {
+    <div style="padding: 10px; border: 1px solid #ccc;">
+        <div>
+            <strong>CreatedAt:</strong> @item.CreatedAt.ToString("dd/MM/yyyy HH:mm")
+        </div>
+        <div >
+            <div>
+                <strong>Client:</strong> @Html.DisplayFor(modelItem => item.Client.NumeProprietar)
+            </div>
+            <div>
+                <strong>CNP:</strong> @Html.DisplayFor(modelItem => item.CNP)
+            </div>
 
+            <div>
+                <strong>Serie CI:</strong> @Html.DisplayFor(modelItem => item.SerieCI)
+            </div>
+            <div>
+                <strong>Numar CI:</strong> @Html.DisplayFor(modelItem => item.NumarCI)
+            </div>
+            <div>
+                <strong>Varsta:</strong> @Html.DisplayFor(modelItem => item.Varsta)
+            </div>
+        </div>
+        
+        <div>
+            <strong>Numar identificare:</strong> @Html.DisplayFor(modelItem => item.NumarIdentificare)
+        </div>
+        <div>
+            <strong>Nr inmatriculare:</strong> @Html.DisplayFor(modelItem => item.NrInmatriculare)
+        </div>
+        <div>
+            <strong>Marca:</strong> @Html.DisplayFor(modelItem => item.Marca)
+        </div>
+        <div>
+            <strong>Model:</strong> @Html.DisplayFor(modelItem => item.Model)
+        </div>
+        <div>
+            <strong>An fabricatie:</strong> @Html.DisplayFor(modelItem => item.AnFabricatie)
+        </div>
+        <div>
+            <strong>Capacitate cilindrica:</strong> @Html.DisplayFor(modelItem => item.CapacitateCilindrica)
+        </div>
+        <div>
+            <strong>Serie CIV:</strong> @Html.DisplayFor(modelItem => item.SerieCIV)
+        </div>
+        <div>
+            <strong>Nr locuri:</strong> @Html.DisplayFor(modelItem => item.NrLocuri)
+        </div>
+        <div>
+            <strong>Masa maxima:</strong> @Html.DisplayFor(modelItem => item.MasaMaxima)
+        </div>
+        <div>
+            <strong>Putere:</strong> @Html.DisplayFor(modelItem => item.Putere)
+        </div>
+        <div>
+            <strong>Categorie vehicul:</strong> @Html.DisplayFor(modelItem => item.CategorieVehicul.CategoriaVehicul)
+        </div>
+        <div>
+                <strong>Tip combustibil:</strong> @Html.DisplayFor(modelItem => item.TipCombustibil.TipulCombustibil)
+            </div>
+            <div>
+                <strong>Pret:</strong> @Html.DisplayFor(modelItem => item.Pret) Lei
+            </div>
+            <div style="margin-top: 10px;">
+                <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"> </i></a> |
+                <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
+            <form asp-page-handler="GeneratePdfFromObjectData" method="post">
+                <input type="hidden" name="id" value="@item.ID" />
+                <button type="submit" class="btn btn-link" title="Generează PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+            </form>
 
-</script>
+            </div>
+        </div>
+        }
