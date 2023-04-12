@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RCA_Asigurari</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RCA_Asigurari.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- Add jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/5v4ulzLPTx9x9L3xl5pyj3f3uvjzewF+r+d5Dz" crossorigin="anonymous"></script>
+
+    <!-- Add Bootstrap CSS and JS libraries -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xM6vrait" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-M7XA0bDp_zHN1Dz_ORpWotrAF64N1g4WOgJRYW_i0q3v8smc5yM0n7D5tpsM5uC4" crossorigin="anonymous"></script>
+
+    <style>
+       
+        .sigla {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+
+        .nav-link {
+            color: black !important;
+            font-weight: 300 !important;
+        }
+
+        .nav-item:hover {
+            background-color: white;
+        }
+
+        .nav-item:hover .nav-link {
+                color: black !important;
+            }
+
+        .footer-item:hover{
+            background-color: white;
+/*            color:white;
+*/        }
+
+        .footer-item:hover .nav-link {
+            color: white !important;
+        }
+
+        .footer-item {
+            text-decoration:none;
+            text-color:white;
+            color:white;
+        }
+        .home-button{
+            text-decoration:none;
+            font-weight: bold; 
+            font-family: Arial;
+            color: white;
+
+        }
+       .home-button: hover{
+                color: black !important;
+/*               background-color: white;
+*/            }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-color: #C47777 !important;">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index"><img align="center" src="~/imagini/logo.png" alt="Sigla" class="sigla" asp-append-version="true" /></a>
+                <a class ="home-button" asp-area="" asp-page="/Index" style="color:white" > HOME</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="d-sm-inline-flex" style="width:1900px; justify-items:right">
+                    <div class="d-sm-inline-flex" style="float: left">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                        <div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-list-columns-reverse">   Liste </i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu">
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/OfertePF/Index"><i class="bi bi-coin"></i> Oferte persoane fizice </a></li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/OfertePJ/Index"><i class="bi bi-coin"></i> Oferte persoane juridice </a></li>
+                                    <li>   <a class="nav-link text-dark" asp-area="" asp-page="/Clienti/Index"><i class="bi bi-people-fill"></i> Clienti</a>   </li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Vehicule/Index"><i class="bi bi-car-front-fill"></i> Vehicule</a>  </li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneFizice/Index"><i class="bi bi-people-fill"></i>Persoane fizice</a></li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneJuridice/Index"><i class="bi bi-people-fill"></i> Persoane juridice </a></li>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                  
+                    <div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-pencil">Adauga</i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu">
+                                   @* <li class="nav-item"> <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Inregistreaza client nou</a></li>*@
+                                   @* <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Clienti/Create"> Clienti</a>  </li>*@
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Clienti/Create"><i class="bi bi-people-fill"></i> Clienti</a>  </li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Vehicule/Create"><i class="bi bi-car-front-fill"></i> Vehicule</a>  </li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneFizice/Create"><i class="bi bi-people-fill"></i>Persoane fizice</a></li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneJuridice/Create"><i class="bi bi-people-fill"></i> Persoane juridice </a></li>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    }}
+
+                      @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("PF"))
+                            {
+                    <div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                          <a class="nav-link text-dark" asp-area="" asp-page="/OfertePF/Index"><i class="bi bi-coin"></i> Oferte persoane fizice </a>
+
+                                            <a class="nav-link text-dark" asp-area="" asp-page="/OfertePF/Create"><i class="bi bi-pencil-square">Calculează-ți oferta!</i>  </a>
+                            </li>
+                        </ul>
+                    </div>
+                            }}
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("PJ"))
+                            {
+                                <div>
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-page="/OfertePJ/Create"><i class="bi bi-pencil-square">Calculează-ți oferta!</i>  </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                        }
+                   </div>
+                    <partial name="_LoginPartial" />
+                  </div>
+                </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+  @*  <footer class="border-top footer text-muted position-fixed">
+        <div class="container" style="color:white; ">
+            &copy; 2023 - RCA_Asigurari - 
+            <a asp-area="" asp-page="/Privacy" class="footer-item"><i class="bi bi-shield-fill-exclamation"></i>   Politica site-ului</a>   |
+            <a asp-area="" asp-page="/ContactUs" class="footer-item"><i class="bi bi-chat-text-fill"></i>   Contact</a>   |
+            <a asp-area="" asp-page="/About" class="footer-item"><i class="bi bi-info-circle-fill"></i>   Despre</a>
+        
+    </footer>*@
+
+
+
+    <footer class="border-top footer text-muted position-fixed">
+        <div style="display: grid; grid-template-columns:  1fr 1fr 1fr 1fr">
+            <div style="color:white">
+                          &copy; 2023 - RCA_Asigurari |
+            </div>
+            <div>
+                <a asp-area="" asp-page="/Privacy" class="footer-item"><i class="bi bi-shield-fill-exclamation"></i>   Politica site-ului</a>   
+
+            </div>
+            <div>
+                <a asp-area="" asp-page="/ContactUs" class="footer-item"><i class="bi bi-chat-text-fill"></i>   Contact</a>   
+
+            </div>
+            <div>
+                <a asp-area="" asp-page="/About" class="footer-item"><i class="bi bi-info-circle-fill"></i>   Despre</a>
+
+            </div>
+    </footer>
+   
+
+
+
+
+        @*
+    <footer class="border-top footer text-muted position-fixed">
+        <div class="row">
+            <div class="column">
+                <a asp-area="" asp-page="/Privacy" class="footer-item"><i class="bi bi-shield-fill-exclamation"></i>   Politica site-ului</a></div>
+            <div class="column">
+                <a asp-area="" asp-page="/ContactUs" class="footer-item"><i class="bi bi-chat-text-fill"></i>   Contact</a>
+            </div>
+            <div class="column">
+                <a asp-area="" asp-page="/About" class="footer-item"><i class="bi bi-info-circle-fill"></i> </a>
+            </div>
+        </div>
+    </footer>*@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

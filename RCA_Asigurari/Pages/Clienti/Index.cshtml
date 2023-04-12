@@ -1,0 +1,84 @@
+﻿@page
+@model RCA_Asigurari.Pages.Clienti.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1><i class="bi bi-people-fill"></i>   Clienti</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.Client[0].TipAsigurat.TipulAsigurat)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Client[0].RadioButtonClient)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].TipClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].NumeProprietar)
+            </th>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.Client[0].CNPCUI)
+            </th>*@
+         
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Adresa)
+            </th>
+          
+         
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Telefon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Client) {
+        <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.TipAsigurat.TipulAsigurat)
+                </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.RadioButtonClient)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipClient.TipulClientului)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.NumeProprietar)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.CNPCUI)
+            </td>*@
+        
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresa)
+            </td>
+          
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"> </i></a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
